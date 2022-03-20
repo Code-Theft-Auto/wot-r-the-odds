@@ -1,9 +1,10 @@
 on:
-  release
+  release:
+    types: [created]
 
 jobs:
   release:
-    name: release ${{ matrix.target }}
+    name: release ${{ matrix.target }} (with non-required env)
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -15,7 +16,7 @@ jobs:
             archive: tar.gz
           - target: x86_64-apple-darwin
             archive: zip
-
+         
     steps:
       - uses: actions/checkout@master
       - name: Compile and release
@@ -24,8 +25,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUSTTARGET: ${{ matrix.target }}
           EXTRA_FILES: "README.md"
-          SRC_DIR: "src"
+          SRC_DIR: "hello"
           ARCHIVE_TYPES: ${{ matrix.archive }}
+          PRE_BUILD: "pre_build.sh"
+          POST_BUILD: "test/post_build.sh"
           MINIFY: "yes"
   release_without_not_required:
     name: release ${{ matrix.target }}
