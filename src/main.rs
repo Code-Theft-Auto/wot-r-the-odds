@@ -36,9 +36,9 @@ fn main() {
         let number = random(a, b); 
         print!("\r{} {}","random number: ".red(),number);
         if i128::from(number) == num {
-            thread::sleep(three_sec);
             print!("\r");
             println!("\rThe number we waited for is here {:?} after {:?} times",number,count);
+            thread::sleep(three_sec);
             break;
         }else {
             count += 1;
