@@ -25,7 +25,7 @@ fn random(min:u64,max:u64) -> u64{
 fn main() {
     let mut count = 0;
     let mut stdout = stdout();
-    let ten_ms = time::Duration::from_millis(10);
+    let three_sec = time::Duration::from_secs(3);
     eprint!("enter minimum value: ");
     read!(a as u64);
     eprint!("enter maximum value: ");
@@ -36,7 +36,7 @@ fn main() {
         let number = random(a, b); 
         print!("\r{} {}","random number: ".red(),number);
         if i128::from(number) == num {
-            thread::sleep(ten_ms);
+            thread::sleep(three_sec);
             print!("\r");
             println!("\rThe number we waited for is here {:?} after {:?} times",number,count);
             break;
