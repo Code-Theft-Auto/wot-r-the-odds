@@ -10,8 +10,8 @@ rand = "0.8.5"
 colored = "2.0.0"
 
 [profile.release]
-strip = true  # Automatically strip symbols from the binary.
-opt-level = "z"  # Optimize for size.
+strip = true  
+opt-level = "z" 
 lto = true
 codegen-units = 1
 panic="abort"
