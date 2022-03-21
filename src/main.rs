@@ -3,7 +3,6 @@ use std::io::{stdin, stdout, Write};
 extern crate colored;
 use colored::*;
 use std::{thread, time};
-
 #[allow(unused_macros)]
 macro_rules! read {
     ($var:ident as $data_type:ty) => {
@@ -17,7 +16,6 @@ macro_rules! read {
 fn random(min: u64, max: u64) -> u64 {
     rand::thread_rng().gen_range(min..max)
 }
-
 fn main() {
     let mut count = 0;
     let mut stdout = stdout();
